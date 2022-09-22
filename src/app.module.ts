@@ -1,10 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+
+import { JoiValidationSchema } from './config';
+import { FileModule } from './file/file.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      validationSchema: JoiValidationSchema
+    }),
+    FileModule,
+    CloudinaryModule,
+  ],
 })
 export class AppModule {}
