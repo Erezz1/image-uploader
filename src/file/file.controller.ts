@@ -13,7 +13,7 @@ export class FileController {
   @UseInterceptors( FileInterceptor('file') )
   uploadImage(
     @UploadedFile(
-      new FileValidationPipe( validFiles.images, maxMB )
+      new FileValidationPipe({ validFiles: validFiles.images, maxMB })
     ) file: Express.Multer.File
   ) {
     return this.fileService.uploadImage( file );
