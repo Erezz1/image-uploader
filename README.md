@@ -2,72 +2,56 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Manejo de Archivos #
+Manejo de archivos a traves de multer y subida de imagenes a Cloudinary.
 
-## Description
+__NOTA:__ Correr la aplicacion con las siguientes dependencias ya instaladas de forma global
+* [Git](https://git-scm.com/)
+* [Docker](https://docs.docker.com/) y [docker-compose](https://docs.docker.com/compose/)
+* [Yarn](https://yarnpkg.com/)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+## Iniciar desarrollo ##
+Seguir la siguiente lista de pasos:
+1. Clonar el repositorio y cambiar a la branch
+```
+  git clone https://github.com/Erezz1/server-templates
+  cd ./server-templates
+  git checkout file-and-image
 ```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+2. Instalar nest-cli
+```
+  npm install -g @nestjs/cli
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+3. Instalar dependencias para desarrollo
+```
+  yarn install
 ```
 
-## Support
+4. Configurar variables de entorno __.env__ en base al molde __.example.env__ 
+> __Nota:__ Esta configuracion es para contar con una base de datos PostreSQL, si deseas utilizar otra base de datos SQL o una NoSQL, deberas modificar el archivo _docker-compose.yaml_ y _docker-compose.prod.yaml_, ademas de tambien modificar los archivos de configuracion _.env_, _./src/config/joi.validation.d.ts_ y _./src/config/joi.validation.ts_.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+5. Correr base de datos con docker-compose
+> __Nota:__ Si decidiste no utilizar una base de datos, no sigas este paso y salta al paso 6.
+```
+  docker-compose up -d
+```
 
-## Stay in touch
+6. Correr la aplicacion en modo desarrollo
+```
+  yarn start:dev
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+7. Integra a los siguientes links
+* Documentacion: [http://localhost:3000/docs/](#)
+* Api: [http://localhost:3000/api/](#)
+* Home: [http://localhost:3000/](#)
+> __Nota:__ el puero variara segun el que hayas configurado en el archivo _.env_
 
-## License
-
-  Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Desplegar a produccion ##
+1. Realizar los pasos del 1 al 4 de la seccion __Iniciar desarrollo__
+2. Correr la aplicacion completa mediante un contenedor de Docker
+```
+  docker-compose -f docker-compose.prod.yaml up -d 
+```

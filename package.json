@@ -25,6 +25,8 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/serve-static": "^3.0.0",
+    "@nestjs/swagger": "^6.1.2",
     "@types/streamifier": "^0.1.0",
     "buffer-to-stream": "^1.0.0",
     "class-transformer": "^0.5.1",

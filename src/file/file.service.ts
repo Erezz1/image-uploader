@@ -6,6 +6,11 @@ import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 export class FileService {
   constructor( private cloudinaryService: CloudinaryService ) {}
 
+  /**
+   * Subida de imagen a la nube de Cloudinary
+   * @param file Archivo de imagen
+   * @returns { id, url }
+   */
   async uploadImage( file: Express.Multer.File ) {
     const res = await this.cloudinaryService.uploadImage( file );
 
@@ -18,6 +23,11 @@ export class FileService {
     };
   }
 
+  /**
+   * Busqueda de una imagen por medio de su identificador
+   * @param file_id Identificador de una imagen
+   * @returns { id, url }
+   */
   async findImage( file_id: string ) {
     const res = await this.cloudinaryService.findImage( file_id );
 
@@ -30,6 +40,11 @@ export class FileService {
     };
   }
 
+  /**
+   * Eliminacion de una imagen por medio de su identificador
+   * @param file_id identificador de una imagen
+   * @returns { result: 'ok' }
+   */
   async removeImage( file_id: string ) {
     const res = await this.cloudinaryService.deleteImage( file_id );
 

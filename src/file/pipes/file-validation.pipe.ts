@@ -1,8 +1,11 @@
-import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
+import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException, PayloadTooLargeException, UnsupportedMediaTypeException } from '@nestjs/common';
 
 import { byteToMB } from '../helpers';
-import { IFileValidationPipe } from '../interfaces';
 
+interface IFileValidationPipe {
+  validFiles?: string[] | string | null;
+  maxMB?: number;
+}
 
 @Injectable()
 export class FileValidationPipe implements PipeTransform {
@@ -28,12 +31,12 @@ export class FileValidationPipe implements PipeTransform {
       throw new BadRequestException('The file does not exist in the request');
 
     if ( byteToMB( file.size ) > maxMB )
-      throw new BadRequestException(`The maximum size is ${ maxMB }MB for each file`);
+      throw new PayloadTooLargeException(`The maximum size is ${ maxMB }MB for each file`);
 
     if ( validFiles && Array.isArray( validFiles ) && !validFiles.includes( file.mimetype ))
-      throw new BadRequestException('The file is not valid');
+      throw new UnsupportedMediaTypeException('The file is not valid');
     else if ( validFiles && !Array.isArray( validFiles ) && validFiles !== file.mimetype )
-      throw new BadRequestException('The file is not valid');
+      throw new UnsupportedMediaTypeException('The file is not valid');
 
     return file;
   }

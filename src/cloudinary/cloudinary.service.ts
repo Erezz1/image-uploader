@@ -7,6 +7,11 @@ import { folderCloudinary } from './constants';
 @Injectable()
 export class CloudinaryService {
 
+  /**
+   * Subida de imagen a la nube de Cloudinary
+   * @param file Archivo de imagen que se subira a la nube
+   * @returns Detalles de la imagen subida
+   */
   async uploadImage(
     file: Express.Multer.File,
   ): Promise<UploadApiResponse | UploadApiErrorResponse> {
@@ -25,6 +30,11 @@ export class CloudinaryService {
     });
   }
 
+  /**
+   * Busqueda de una imagen por medio de su identificador
+   * @param public_id Identificador de una imagen
+   * @returns Detalles de la imagen encontrada
+   */
   async findImage( public_id: string ): Promise<UploadApiResponse> {
     try {
       const res = await cloudinary.api.resource(`${ folderCloudinary }/${ public_id }`)
@@ -39,6 +49,11 @@ export class CloudinaryService {
     }
   }
 
+  /**
+   * Eliminacion de una imagen por medio de su identificador
+   * @param public_id Identificador de una imagen
+   * @returns Respuesta
+   */
   async deleteImage( public_id: string ): Promise<any> {
     return cloudinary.uploader.destroy(`${ folderCloudinary }/${ public_id }`);
   }
