@@ -2,8 +2,8 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-# Manejo de Archivos #
-Manejo de archivos a traves de multer y subida de imagenes a Cloudinary.
+# Image Uploader #
+Image Uploader server para el challenge de DevChallenge.io
 
 __NOTA:__ Correr la aplicacion con las siguientes dependencias ya instaladas de forma global
 * [Git](https://git-scm.com/)
