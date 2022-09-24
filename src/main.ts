@@ -15,6 +15,8 @@ async function bootstrap() {
     })
   );
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Share Image')
     .setDescription('Documentacion detallada de cada endpoint de la API de Share Image.')

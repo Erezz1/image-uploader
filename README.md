@@ -12,14 +12,14 @@ __NOTA:__ Correr la aplicacion con las siguientes dependencias ya instaladas de 
 
 ## Iniciar desarrollo ##
 Seguir la siguiente lista de pasos:
-1. Clonar el repositorio y cambiar a la branch
+1. Clonar el repositorio y cambiar a la branch _file-and-image_
 ```
   git clone https://github.com/Erezz1/server-templates
   cd ./server-templates
   git checkout file-and-image
 ```
 
-2. Instalar nest-cli
+2. Instalar nest-cli de forma global
 ```
   npm install -g @nestjs/cli
 ```
@@ -43,11 +43,11 @@ Seguir la siguiente lista de pasos:
   yarn start:dev
 ```
 
-7. Integra a los siguientes links
+7. Accede a los siguientes links
 * Documentacion: [http://localhost:3000/docs/](#)
 * Api: [http://localhost:3000/api/](#)
 * Home: [http://localhost:3000/](#)
-> __Nota:__ el puero variara segun el que hayas configurado en el archivo _.env_
+> __Nota:__ el puerto dependera segun el que hayas configurado en el archivo _.env_
 
 ## Desplegar a produccion ##
 1. Realizar los pasos del 1 al 4 de la seccion __Iniciar desarrollo__
