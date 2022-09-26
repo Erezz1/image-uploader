@@ -31,16 +31,17 @@ const UploadImage = () => {
         const formData = new FormData();
         formData.append('file', file );
 
-        await axiosInstance
-            .post<ImageResponse>(
-                '/file',
-                formData,
-                { headers: { 'Content-Type': 'multipart/form-data' } }
-            )
-            .then( res => navigate(`?image=${ res.data.id }`))
+        const { data } = await axiosInstance.post<ImageResponse>(
+            '/file',
+            formData,
+            { headers: { 'Content-Type': 'multipart/form-data' } }
+        );
 
-        cleanFile();
         notLoading();      
+        cleanFile();
+
+        if ( data.id )
+            navigate(`?image=${ data.id }`)
     }
 
     return (

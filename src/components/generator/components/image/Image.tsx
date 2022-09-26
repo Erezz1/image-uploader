@@ -10,7 +10,10 @@ interface IProps {
 }
 const Image = ({ id }: IProps ) => {
 
-    const [ imageData, setImageData ] = useState<ImageResponse | null>( null );
+    const [ imageData, setImageData ] = useState<ImageResponse | null>({
+        id: '',
+        url: ''
+    });
 
     useEffect(() => {
         axiosInstance
@@ -23,7 +26,17 @@ const Image = ({ id }: IProps ) => {
     }
 
     if ( !imageData )
-        return <p>Image not found.</p>
+        return (
+            <Text>
+                <Icon
+                    className="material-icons"
+                    style={{ color: '#f27474' }}
+                >
+                    cancel
+                </Icon>
+                Image Not Found!
+            </Text>
+        )
 
     return (
         <>

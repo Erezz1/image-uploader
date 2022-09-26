@@ -28,6 +28,8 @@ axiosInstance.interceptors.response.use(
             title: error.response?.data.message,
             icon: 'error'
         })
+
+        return error;
     }
 )
 

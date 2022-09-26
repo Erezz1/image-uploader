@@ -17,7 +17,11 @@ export const Link = styled.div`
     & > p {
         margin: 0 1rem;
         width: 60%;
-        overflow: hidden;
+        overflow: auto;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     & > button {
