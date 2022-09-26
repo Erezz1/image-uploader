@@ -14,19 +14,19 @@ __NOTA:__ Correr la aplicacion con las siguientes dependencias ya instaladas de 
 Seguir la siguiente lista de pasos:
 1. Clonar el repositorio y cambiar a la branch _file-and-image_
 ```
-  git clone https://github.com/Erezz1/server-templates
-  cd ./server-templates
-  git checkout file-and-image
+  $ git clone https://github.com/Erezz1/image-uploader.git
+  $ cd ./image-uploader
+  $ git checkout server
 ```
 
 2. Instalar nest-cli de forma global
 ```
-  npm install -g @nestjs/cli
+  $ npm install -g @nestjs/cli
 ```
 
 3. Instalar dependencias para desarrollo
 ```
-  yarn install
+  $ yarn install
 ```
 
 4. Configurar variables de entorno __.env__ en base al molde __.example.env__ 
@@ -35,12 +35,12 @@ Seguir la siguiente lista de pasos:
 5. Correr base de datos con docker-compose
 > __Nota:__ Si decidiste no utilizar una base de datos, no sigas este paso y salta al paso 6.
 ```
-  docker-compose up -d
+  $ docker-compose up -d
 ```
 
 6. Correr la aplicacion en modo desarrollo
 ```
-  yarn start:dev
+  $ yarn start:dev
 ```
 
 7. Accede a los siguientes links
@@ -53,5 +53,5 @@ Seguir la siguiente lista de pasos:
 1. Realizar los pasos del 1 al 4 de la seccion __Iniciar desarrollo__
 2. Correr la aplicacion completa mediante un contenedor de Docker
 ```
-  docker-compose -f docker-compose.prod.yaml up -d 
+  $ docker-compose -f docker-compose.prod.yaml up -d 
 ```
